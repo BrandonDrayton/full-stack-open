@@ -13,7 +13,6 @@ const Buttons = ({ onBadClick, onGoodClick, onNeutralClick }) => {
 const Statistics = ({ good, neutral, bad, sum, avg, positive }) => {
   return (
     <div>
-      <h2>Statistics</h2>
       <ul>
         <li>Good: {good}</li>
         <li>Neutral: {neutral}</li>
@@ -53,14 +52,21 @@ const App = () => {
         onGoodClick={handleGoodClick}
         onNeutralClick={handleNeutralClick}
       />
-      <Statistics
-        good={good}
-        bad={bad}
-        neutral={neutral}
-        sum={sum}
-        avg={avg}
-        positive={positive}
-      />
+      <div>
+        <h2>Statistics</h2>
+        {sum === 0 ? (
+          "No Feedback Given"
+        ) : (
+          <Statistics
+            good={good}
+            bad={bad}
+            neutral={neutral}
+            sum={sum}
+            avg={avg}
+            positive={positive}
+          />
+        )}
+      </div>
     </div>
   );
 };
