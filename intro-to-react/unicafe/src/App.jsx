@@ -8,16 +8,18 @@ const App = () => {
 
   const handleGoodClick = () => {
     setGood(good + 1);
-    console.log(good);
   };
   const handleNeutralClick = () => {
     setNeutral(neutral + 1);
-    console.log(neutral);
   };
   const handleBadClick = () => {
     setBad(bad + 1);
-    console.log(bad);
   };
+
+  const sum = good + neutral + bad;
+  const avg = sum === 0 ? 0 : (good - bad) / sum;
+  const positive = sum === 0 ? 0 : good / sum;
+
   return (
     <div>
       <div>
@@ -32,6 +34,9 @@ const App = () => {
           <li>Good: {good}</li>
           <li>Neutral: {neutral}</li>
           <li>Bad: {bad}</li>
+          <li>All: {sum}</li>
+          <li>Average: {avg}%</li>
+          <li>Positive: {positive}%</li>
         </ul>
       </div>
     </div>
