@@ -12,22 +12,25 @@ const Buttons = ({ onBadClick, onGoodClick, onNeutralClick }) => {
 
 const StatisticLine = ({ text, value }) => {
   return (
-    <li>
-      {text}: {value}
-    </li>
+    <tbody>
+      <tr>
+        <td>{text}:</td>
+        <td>{value}</td>
+      </tr>
+    </tbody>
   );
 };
 
 const Statistics = ({ good, neutral, bad, sum, avg, positive }) => {
   return (
-    <ul>
-      <StatisticLine text="Good:" value={good} />
-      <StatisticLine text="Neutral:" value={neutral} />
-      <StatisticLine text="Bad:" value={bad} />
-      <StatisticLine text="All:" value={sum} />
-      <StatisticLine text="Average:" value={avg} />
-      <StatisticLine text="Positive:" value={good} />
-    </ul>
+    <table>
+      <StatisticLine text="Good" value={good} />
+      <StatisticLine text="Neutral" value={neutral} />
+      <StatisticLine text="Bad" value={bad} />
+      <StatisticLine text="All" value={sum} />
+      <StatisticLine text="Average" value={avg} />
+      <StatisticLine text="Positive" value={good} />
+    </table>
   );
 };
 
