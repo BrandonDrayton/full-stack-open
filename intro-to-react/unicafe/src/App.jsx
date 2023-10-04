@@ -6,7 +6,28 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  return <div>Mac test</div>;
+  const handleGoodClick = () => {
+    setGood(good + 1);
+    console.log(good);
+  };
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1);
+    console.log(neutral);
+  };
+  const handleBadClick = () => {
+    setBad(bad + 1);
+    console.log(bad);
+  };
+  return (
+    <div>
+      <div>
+        <h1>Give Feedback</h1>
+        <button onClick={handleGoodClick}>GOOD</button>
+        <button onClick={handleNeutralClick}>NEUTRAL</button>
+        <button onClick={handleBadClick}>BAD</button>
+      </div>
+    </div>
+  );
 };
 
 export default App;
