@@ -10,18 +10,24 @@ const Buttons = ({ onBadClick, onGoodClick, onNeutralClick }) => {
   );
 };
 
+const StatisticLine = ({ text, value }) => {
+  return (
+    <li>
+      {text}: {value}
+    </li>
+  );
+};
+
 const Statistics = ({ good, neutral, bad, sum, avg, positive }) => {
   return (
-    <div>
-      <ul>
-        <li>Good: {good}</li>
-        <li>Neutral: {neutral}</li>
-        <li>Bad: {bad}</li>
-        <li>All: {sum}</li>
-        <li>Average: {avg}%</li>
-        <li>Positive: {positive}%</li>
-      </ul>
-    </div>
+    <ul>
+      <StatisticLine text="Good:" value={good} />
+      <StatisticLine text="Neutral:" value={neutral} />
+      <StatisticLine text="Bad:" value={bad} />
+      <StatisticLine text="All:" value={sum} />
+      <StatisticLine text="Average:" value={avg} />
+      <StatisticLine text="Positive:" value={good} />
+    </ul>
   );
 };
 
