@@ -1,28 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Button = ({ onClick, text }) => {
   return <button onClick={onClick}>{text}</button>;
 };
 
-const AnecdotesOfTheDay = ({ text, votes }) => {
+const Anecdote = ({ title, text, votes }) => {
   return (
     <>
-      <h1>Anecdote of the day!</h1>
+      <h1>{title}</h1>
       <div>
         {text} has {votes} votes
       </div>
       <br />
-    </>
-  );
-};
-
-const HighestVotedAnecdotes = ({ text, votes }) => {
-  return (
-    <>
-      <h1>Anecdote with the most votes!</h1>
-      <div>
-        {text} This anecdote has {votes} votes!
-      </div>
     </>
   );
 };
@@ -38,23 +27,32 @@ const App = () => {
     "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.",
     "The only way to go fast, is to go well.",
   ];
+
   const [selected, setSelected] = useState(0);
   const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0));
   const mostVotes = votes.indexOf(Math.max(...votes));
-  const copy = [...votes];
+
   const handleAnecdoteClick = () => {
-    anecdotes[setSelected(Math.floor(Math.random() * anecdotes.length))];
+    setSelected(Math.floor(Math.random() * anecdotes.length));
   };
+
   const handleVoteClick = () => {
+    const copy = [...votes];
     copy[selected] += 1;
     setVotes(copy);
   };
+
   return (
     <>
-      <AnecdotesOfTheDay text={anecdotes[selected]} votes={votes[selected]} />
+      <Anecdote
+        title="Anecdote of the day!"
+        text={anecdotes[selected]}
+        votes={votes[selected]}
+      />
       <Button text="New Anecdote" onClick={handleAnecdoteClick} />
       <Button text="Add Vote" onClick={handleVoteClick} />
-      <HighestVotedAnecdotes
+      <Anecdote
+        title="Anecdote with the most votes!"
         text={anecdotes[mostVotes]}
         votes={votes[mostVotes]}
       />
