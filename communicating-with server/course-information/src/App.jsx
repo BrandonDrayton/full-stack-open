@@ -22,7 +22,9 @@ const App = () => {
       },
     ],
   };
-
+  console.log(course);
+  console.log(course.parts);
+  console.log(course.parts[0]);
   return <Course course={course} />;
 };
 
