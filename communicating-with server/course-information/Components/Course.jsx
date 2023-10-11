@@ -5,6 +5,7 @@ const Course = ({ course }) => {
     <>
       <Header title={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </>
   );
 };
@@ -16,17 +17,20 @@ const Content = ({ parts }) => {
   return (
     <>
       {parts.map((part) => (
-        <div
-          key={part.id}
-          text={part.name}
-          value={part.exercises}
-          {...console.log(part.id)}
-        >
-          {console.log(part.name)}
+        <div key={part.id} text={part.name} value={part.exercises}>
           {part.name}: {part.exercises}
         </div>
       ))}
+      ;
     </>
   );
 };
+const Total = ({ parts }) => {
+  const totalExercises = parts.reduce((acc, current) => {
+    return acc + current.exercises;
+  }, 0);
+
+  return <div>Total exercises: {totalExercises}</div>;
+};
+
 export default Course;
